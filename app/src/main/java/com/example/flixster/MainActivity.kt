@@ -41,18 +41,18 @@ class MainActivity : AppCompatActivity() {
             override fun onFailure(
                 statusCode: Int, headers: Headers?, response: String?, throwable: Throwable?
             ) {
-                Log.e(TAG, "onFailure $statusCode" )
+                Log.e( TAG, "onFailure $statusCode" )
             }
 
             override fun onSuccess( statusCode: Int, headers: Headers?, json: JSON ) {
                 Log.i( TAG, "onSuccess: JSON data $json" )
                 try {
-                    val movieJsonArray = json.jsonObject.getJSONArray("results")
-                    movies.addAll(Movie.fromJsonArray(movieJsonArray))
+                    val movieJsonArray = json.jsonObject.getJSONArray("results" )
+                    movies.addAll( Movie.fromJsonArray( movieJsonArray ) )
                     movieAdapter.notifyDataSetChanged()
-                    Log.i(TAG, "Movie list $movies")
+                    Log.i( TAG, "Movie list $movies" )
                 } catch( e: JSONException ) {
-                    Log.e( TAG, "Encountred exception" )
+                    Log.e( TAG, "Encountered exception" )
                 }
             }
         })
